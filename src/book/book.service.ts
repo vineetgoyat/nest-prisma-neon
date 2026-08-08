@@ -18,4 +18,13 @@ export class BookService {
             where: { id }
         });
     }
+
+    update(data: UpdateBookInput) {
+        return this.prisma.book.update({
+            where: { id: data.id },
+            data: { title: data.title,
+                author: data.author
+            }
+        })
+    }
 }
