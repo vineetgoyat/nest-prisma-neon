@@ -13,4 +13,9 @@ export class BookService {
     findAll(){
         return this.prisma.book.findMany()
     }
+    findOne(id: string){
+        return this.prisma.book.findUnique({
+            where: { id }
+        })
+    }
 }
