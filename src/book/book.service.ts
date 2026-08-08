@@ -16,6 +16,6 @@ export class BookService {
     findOne(id: string){
         return this.prisma.book.findUnique({
             where: { id }
-        })
+        });
     }
 }
