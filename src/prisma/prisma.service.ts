@@ -3,5 +3,7 @@ import { PrismaClient } from '@prisma/client/scripts/default-index.js';
 
 @Injectable()
 export class PrismaService extends PrismaClient implements OnModuleInit, OnModuleDestroy {
-
+    async onModuleInit() {
+        await this.$connect();
+    }
 }
