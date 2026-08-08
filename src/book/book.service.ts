@@ -9,4 +9,8 @@ export class BookService {
     create(data: CreateBookInput) {
         return this.prisma.book.create({ data });
     }
+
+    findAll(){
+        return this.prisma.book.findMany()
+    }
 }
