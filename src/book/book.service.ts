@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { CreateBookInput } from './dto/create-book.input';
+import { UpdateBookInput } from './dto/update-book.input';
 
 @Injectable()
 export class BookService {
@@ -25,6 +26,11 @@ export class BookService {
             data: { title: data.title,
                 author: data.author
             }
+        })
+    }
+    remove(id: string) {
+        return this.prisma.book.delete({
+            where: { id }
         })
     }
 }
