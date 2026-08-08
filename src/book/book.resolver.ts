@@ -26,4 +26,8 @@ export class BookResolver {
     updateBook(@Args('input') input : UpdateBookInput){ 
         return this.bookService.update(input);
     }
+    @Mutation( () => Book )
+    deleteBook (@Args('id') id: string){
+        return this.bookService.remove(id);
+    }
 }
