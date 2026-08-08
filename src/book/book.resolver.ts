@@ -1,4 +1,4 @@
-import { Query, Resolver } from '@nestjs/graphql';
+import { Args, Query, Resolver } from '@nestjs/graphql';
 import { Book } from './model/book.model';
 import { BookService } from './book.service';
 
@@ -9,5 +9,10 @@ export class BookResolver {
     @Query( () => [Book] )
     getAllBooks(){
         return this.bookService.findAll();
+    }
+
+    @Query( () => Book )
+    getBook(@Args('id') id: string){
+        return this.bookService.findOne(id);
     }
 }
