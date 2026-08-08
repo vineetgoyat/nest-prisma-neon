@@ -12,6 +12,7 @@ import { ApolloDriverConfig } from 'node_modules/@nestjs/apollo/dist/interfaces/
     driver: ApolloDriver,
     autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
     sortSchema: true,
+    playground: true,
   }),PrismaModule, BookModule],
   controllers: [AppController],
   providers: [AppService],
