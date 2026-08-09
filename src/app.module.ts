@@ -6,7 +6,7 @@ import { BookModule } from './book/book.module';
 import { join } from 'path';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { GraphQLModule } from '@nestjs/graphql';
-import { ThrottlerModule } from '@nestjs/throttler';
+import { seconds, ThrottlerModule } from '@nestjs/throttler';
 
 @Module({
   imports: [GraphQLModule.forRoot<ApolloDriverConfig>
@@ -20,9 +20,11 @@ import { ThrottlerModule } from '@nestjs/throttler';
   BookModule,
   ThrottlerModule.forRoot({
     throttlers : [
-      name : 'default',
+      {
+        name : 'default',
       ttl : seconds(60),
-      limit : 3,
+      limit : 3
+      }
     ]
   })
 ],
