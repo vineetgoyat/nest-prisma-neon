@@ -25,7 +25,8 @@ import { seconds, ThrottlerModule } from '@nestjs/throttler';
       ttl : seconds(60),
       limit : 3
       }
-    ]
+    ],
+    errorMessage : 'Too many requests, please try again later.',
   })
 ],
   controllers: [AppController],
