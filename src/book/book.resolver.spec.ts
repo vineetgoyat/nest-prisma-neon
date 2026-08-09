@@ -1,15 +1,11 @@
-import { Test, TestingModule } from '@nestjs/testing';
 import { BookResolver } from './book.resolver';
 
 describe('BookResolver', () => {
   let resolver: BookResolver;
 
-  beforeEach(async () => {
-    const module: TestingModule = await Test.createTestingModule({
-      providers: [BookResolver],
-    }).compile();
-
-    resolver = module.get<BookResolver>(BookResolver);
+  beforeEach(() => {
+    const mockBookService: Partial<Record<string, any>> = {};
+    resolver = new BookResolver(mockBookService as any);
   });
 
   it('should be defined', () => {

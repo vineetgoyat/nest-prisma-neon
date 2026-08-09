@@ -5,11 +5,20 @@
 
 generator client {
   provider = "prisma-client"
-  output   = "../generated/prisma"
+  // Generate the client into the repository `generated/prisma` folder
+  // Also populate the installed @prisma/client package runtime so imports work
+  output = "../generated/prisma"
+}
+
+// Additionally generate the runtime files into the installed package location
+generator client_runtime {
+  provider = "prisma-client"
+  output = "../node_modules/@prisma/client/.prisma/client"
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "sqlite"
+  url = "file:./dev.db"
 }
 
 model Book {

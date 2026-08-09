@@ -3,9 +3,9 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { PrismaModule } from './prisma/prisma.module';
 import { BookModule } from './book/book.module';
-import { join } from 'generated/prisma/internal/prismaNamespaceBrowser';
-import { ApolloDriver } from 'node_modules/@nestjs/apollo/dist/drivers/apollo.driver';
-import { ApolloDriverConfig } from 'node_modules/@nestjs/apollo/dist/interfaces/apollo-driver-config.interface';
+import { join } from 'path';
+import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
+import { GraphQLModule } from '@nestjs/graphql';
 
 @Module({
   imports: [GraphQLModule.forRoot<ApolloDriverConfig>({

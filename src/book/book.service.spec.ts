@@ -1,15 +1,22 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { BookService } from './book.service';
+import type { PrismaService } from '../prisma/prisma.service';
+
+const mockPrisma: Partial<Record<string, any>> = {
+  book: {
+    create: jest.fn(),
+    findMany: jest.fn().mockResolvedValue([]),
+    findUnique: jest.fn(),
+    update: jest.fn(),
+    delete: jest.fn(),
+  },
+};
 
 describe('BookService', () => {
   let service: BookService;
 
   beforeEach(async () => {
-    const module: TestingModule = await Test.createTestingModule({
-      providers: [BookService],
-    }).compile();
-
-    service = module.get<BookService>(BookService);
+    service = new BookService(mockPrisma as any);
   });
 
   it('should be defined', () => {
