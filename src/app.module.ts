@@ -6,7 +6,7 @@ import { BookModule } from './book/book.module';
 import { join } from 'path';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { GraphQLModule } from '@nestjs/graphql';
-import { seconds, ThrottlerModule } from '@nestjs/throttler';
+import { seconds, ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
 import { APP_GUARD } from '@nestjs/core';
 
 @Module({
@@ -33,6 +33,7 @@ import { APP_GUARD } from '@nestjs/core';
   controllers: [AppController],
   providers: [AppService, {
     provide : APP_GUARD,
+    useClass : ThrottlerGuard
   }],
 })
 export class AppModule {}
