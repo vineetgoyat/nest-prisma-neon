@@ -7,6 +7,7 @@ import { join } from 'path';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { GraphQLModule } from '@nestjs/graphql';
 import { seconds, ThrottlerModule } from '@nestjs/throttler';
+import { APP_GUARD } from '@nestjs/core';
 
 @Module({
   imports: [GraphQLModule.forRoot<ApolloDriverConfig>
@@ -30,6 +31,8 @@ import { seconds, ThrottlerModule } from '@nestjs/throttler';
   })
 ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, {
+    provide : APP_GUARD,
+  }],
 })
 export class AppModule {}
