@@ -9,6 +9,7 @@ export class AppController {
   @Get()
   @Throttle({ default: { limit: 3, ttl: 60000 } })
   getHello(): string {
+    
     return 'This is a rate-limited route';
   }
 }
